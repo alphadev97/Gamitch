@@ -1,3 +1,4 @@
+import SearchBar from "@/components/SearchBar";
 import Image from "next/image";
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
               Unlock the Potential of Self-Serve Product and Growth Analytics
               for Enhanced Conversions, Engagement, and Customer Retention.
             </p>
-            SearchBar
+            <SearchBar />
           </div>
           HeroCarousel
         </div>
