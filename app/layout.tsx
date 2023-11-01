@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <>
-          <Model isOpen />
+          <Model isOpen title="Test Model" />
           <Layout>{children}</Layout>
         </>
       </body>
