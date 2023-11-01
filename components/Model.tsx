@@ -1,4 +1,7 @@
+"use client";
+
 import { useCallback } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface ModelProps {
   isOpen?: boolean;
@@ -49,6 +52,12 @@ const Model: React.FC<ModelProps> = ({
               {/* Header */}
               <div className="flex items-center justify-between p-10 rounded">
                 <h3 className="text-3xl font-semibold text-white">{title}</h3>
+                <button
+                  className="p-1 ml-auto border-0 text-white hover:opacity-70"
+                  onClick={handleClose}
+                >
+                  <AiOutlineClose size={20} />
+                </button>
               </div>
             </div>
           </div>
