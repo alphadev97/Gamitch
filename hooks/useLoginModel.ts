@@ -7,7 +7,7 @@ interface LoginModelStore {
 }
 
 const useLoginModel = create<LoginModelStore>((set) => ({
-  isOpen: false,
+  isOpen: true,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
 }));
