@@ -19,8 +19,8 @@ const LoginModel = () => {
       return;
     }
 
-    registerModel.onClose();
-    loginModel.onOpen();
+    loginModel.onClose();
+    registerModel.onOpen();
   }, [isLoading, registerModel, loginModel]);
 
   const onSubmit = useCallback(async () => {
