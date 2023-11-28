@@ -4,27 +4,31 @@ import useLoginModel from "@/hooks/useLoginModel";
 import React, { useCallback, useState } from "react";
 import Input from "../Input";
 import Model from "../Model";
+import useRegisterModel from "../../hooks/useRegisterModel";
 
-const LoginModel = () => {
+const RegisterModel = () => {
   const loginModel = useLoginModel();
+  const registerModel = useRegisterModel();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
 
-      // TODO ADD LOG IN
+      // TODO ADD REGISTER AND LOGIN
 
-      loginModel.onClose();
+      registerModel.onClose();
     } catch (error) {
       console.log(error);
     } finally {
       setIsLoading(false);
     }
-  }, [loginModel]);
+  }, [registerModel]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -32,6 +36,18 @@ const LoginModel = () => {
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
+        disabled={isLoading}
+      />
+      <Input
+        placeholder="Name"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        disabled={isLoading}
+      />
+      <Input
+        placeholder="Username"
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
         disabled={isLoading}
       />
       <Input
@@ -46,14 +62,14 @@ const LoginModel = () => {
   return (
     <Model
       disabled={isLoading}
-      isOpen={loginModel.isOpen}
-      title="Login"
-      actionLabel="Sign in"
-      onClose={loginModel.onClose}
+      isOpen={registerModel.isOpen}
+      title="Create an account"
+      actionLabel="Register"
+      onClose={registerModel.onClose}
       onSubmit={onSubmit}
       body={bodyContent}
     />
   );
 };
 
-export default LoginModel;
+export default RegisterModel;
