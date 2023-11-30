@@ -1,6 +1,6 @@
 import EmptyState from "../components/EmptyState";
 
-const page = () => {
+const Users = () => {
   return (
     <div className="hidden lg:block lg:pl-80 h-full">
       <EmptyState />
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Users;
