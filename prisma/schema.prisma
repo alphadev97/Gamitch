@@ -48,3 +48,17 @@ model Account {
 
   @@unique([provider, providerAccountId])
 }
+
+model Conversation {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt       DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+  name String?
+  isGroup Boolean?
+  
+  messagesIds String[] @db.ObjectId
+  messages Message[]
+
+  userIds String[] @db.ObjectId
+  users User[] @relation(fields: [userIds], references: [id])
+}
