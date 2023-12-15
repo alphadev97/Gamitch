@@ -1,3 +1,3 @@
 export default function Home() {
-  return <p className="text-red-500 font-bold">Hello tweitch</p>;
+  return <p>Only Authenticated User can see this</p>;
 }
