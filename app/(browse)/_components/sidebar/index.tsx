@@ -1,3 +1,4 @@
+import { Recommanded } from "./recommanded";
 import { Toggle } from "./toggle";
 import { Wrapper } from "./wrapper";
 
