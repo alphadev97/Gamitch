@@ -7,6 +7,7 @@ import { useSidebar } from "@/store/use-sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { UserAvatar } from "@/components/user-avatar";
+import { LiveBadge } from "@/components/live-badge";
 
 interface UserItemProps {
   username: string;
@@ -38,6 +39,8 @@ export const UserItem = ({ username, imageUrl, isLive }: UserItemProps) => {
           )}
         >
           <UserAvatar imageUrl={imageUrl} username={username} isLive={isLive} />
+          {!collapsed && <p className="truncate">{username}</p>}
+          {!collapsed && isLive && <LiveBadge className="ml-auto" />}
         </div>
       </Link>
     </Button>
