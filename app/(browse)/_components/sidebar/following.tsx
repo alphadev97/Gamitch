@@ -8,7 +8,19 @@ interface FollowingProps {
 }
 
 export const Following = ({ data }: FollowingProps) => {
-  const {} = useSidebar((state) => state);
+  const { collapsed } = useSidebar((state) => state);
 
-  return <div>Following</div>;
+  if (!data.length) {
+    return null;
+  }
+
+  return (
+    <div>
+      {!collapsed && (
+        <div className="pl-6 mb-4">
+          <p className="text-sm text-muted-foreground">Following</p>
+        </div>
+      )}
+    </div>
+  );
 };
