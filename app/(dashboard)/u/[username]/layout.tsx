@@ -1,6 +1,7 @@
 import { getSelfByUsername } from "@/lib/auth-service";
 import { redirect } from "next/navigation";
 import { Navbar } from "./_components/navbar";
+import { Sidebar } from "./_components/sidebar";
 
 interface CreatorLayoutPage {
   params: { username: string };
@@ -17,7 +18,10 @@ const CreatorLayout = async ({ params, children }: CreatorLayoutPage) => {
   return (
     <>
       <Navbar />
-      <div className="flex h-full pt-20">{children}</div>
+      <div className="flex h-full pt-20">
+        <Sidebar />
+        {children}
+      </div>
     </>
   );
 };
