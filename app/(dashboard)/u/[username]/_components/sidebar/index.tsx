@@ -1,3 +1,5 @@
+import { Wrapper } from "./wrapper";
+
 export const Sidebar = () => {
-  return <div>Sidebar!</div>;
+  return <Wrapper>Sidebar!</Wrapper>;
 };
