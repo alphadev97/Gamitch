@@ -7,7 +7,9 @@ const KeysPage = () => {
         <h1 className="text-2xl font-bold">Keys & URLs</h1>
         <Button variant={"primary"}>Generate</Button>
       </div>
-      <div className="space-y-4"></div>
+      <div className="space-y-4">
+        <UrlCard />
+      </div>
     </div>
   );
 };
