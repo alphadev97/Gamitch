@@ -40,4 +40,6 @@ export async function POST(req: Request) {
       },
     });
   }
+
+  return new Response("Unhandled request", { status: 500 });
 }
