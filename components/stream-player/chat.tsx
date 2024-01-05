@@ -9,6 +9,7 @@ import {
 import { ConnectionState } from "livekit-client";
 import { useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import { ChatHeader } from "./chat-header";
 
 interface ChatProps {
   hostName: string;
@@ -58,5 +59,13 @@ export const Chat = ({
     setValue("");
   };
 
-  return <div>Chats</div>;
+  const onChange = (value: string) => {
+    setValue(value);
+  };
+
+  return (
+    <div className="flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
+      <ChatHeader />
+    </div>
+  );
 };
