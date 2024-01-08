@@ -41,7 +41,7 @@ export const Header = ({
           imageUrl={imageUrl}
           username={hostName}
           size="lg"
-          isLive={true}
+          isLive={isLive}
           showBadge
         />
         <div className="space-y-1">
@@ -59,7 +59,7 @@ export const Header = ({
               </p>
             </div>
           ) : (
-            <p>Offline</p>
+            <p className="font-semibold text-xs ">Offline</p>
           )}
         </div>
       </div>
