@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { CommunityItem } from "./community-item";
 
 interface ChatCommunityProps {
   hostName: string;
