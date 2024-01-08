@@ -1,11 +1,12 @@
 "use client";
 
 import { useParticipants } from "@livekit/components-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CommunityItem } from "./community-item";
+import { LocalParticipant, RemoteParticipant } from "livekit-client";
 
 interface ChatCommunityProps {
   hostName: string;
@@ -27,6 +28,24 @@ export const ChatCommunity = ({
     setValue(newValue);
   };
 
+  const filteredParticipants = useMemo(() => {
+    const deduped = participants.reduce((acc, participant) => {
+      const hostAsViewer = `host-${participant.identity}`;
+
+      if (!acc.some((p) => p.identity === hostAsViewer)) {
+        acc.push(participant);
+      }
+
+      return acc;
+    }, [] as (RemoteParticipant | LocalParticipant)[]);
+
+    return deduped.filter((participant) => {
+      return participant.name
+        ?.toLowerCase()
+        .includes(debounceValue.toLowerCase());
+    });
+  }, [participants, debounceValue]);
+
   if (isHidden) {
     return (
       <div className="flex flex-1 items-center justify-center">
@@ -46,7 +65,7 @@ export const ChatCommunity = ({
         <p className="text-center text-sm text-muted-foreground hidden last:block p-2">
           No results
         </p>
-        {participants.map((partcipant) => (
+        {filteredParticipants.map((partcipant) => (
           <CommunityItem
             key={partcipant.identity}
             hostName={hostName}
