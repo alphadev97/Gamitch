@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface ActionsProps {
   hostIdentity: string;
@@ -72,4 +73,8 @@ export const Actions = ({
       {isFollowing ? "Unfollow" : "Follow"}
     </Button>
   );
+};
+
+export const ActionsSkeleton = () => {
+  return <Skeleton className="h-10 w-full lg:w-24" />;
 };
