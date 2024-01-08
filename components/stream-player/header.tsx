@@ -7,6 +7,7 @@ import {
   useRemoteParticipant,
 } from "@livekit/components-react";
 import { UserIcon } from "lucide-react";
+import { Actions } from "./actions";
 
 interface HeaderProps {
   imageUrl: string;
@@ -63,6 +64,11 @@ export const Header = ({
           )}
         </div>
       </div>
+      <Actions
+        isFollowing={isFollowing}
+        hostIdentity={hostIdentity}
+        isHost={isHost}
+      />
     </div>
   );
 };
