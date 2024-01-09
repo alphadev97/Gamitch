@@ -1,6 +1,7 @@
-import { getSelf } from "@/lib/auth-service";
-import { db } from "@/lib/db";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
+
+import { db } from "@/lib/db";
+import { getSelf } from "@/lib/auth-service";
 
 const f = createUploadthing();
 
@@ -12,14 +13,14 @@ export const ourFileRouter = {
     },
   })
     .middleware(async () => {
-      const self = getSelf();
+      const self = await getSelf();
 
       return { user: self };
     })
     .onUploadComplete(async ({ metadata, file }) => {
       await db.stream.update({
         where: {
-          userId: (await metadata.user).id, // i change
+          userId: metadata.user.id,
         },
         data: {
           thumbnailUrl: file.url,
