@@ -30,7 +30,10 @@ export const InfoModal = ({ initialName }: InfoModalProps) => {
 
     startTransition(() => {
       updateStream({ name: name })
-        .then(() => toast.success("Stream updated"))
+        .then(() => {
+          toast.success("Stream updated");
+          closeRef?.current?.click();
+        })
         .catch(() => toast.error("Something went wrong"));
     });
   };
