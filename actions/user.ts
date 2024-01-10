@@ -7,22 +7,18 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 export const updateUser = async (values: Partial<User>) => {
-  try {
-    const self = await getSelf();
-    const validData = {
-      bio: values.bio,
-    };
+  const self = await getSelf();
+  const validData = {
+    bio: values.bio,
+  };
 
-    const user = await db.user.update({
-      where: { id: self.id },
-      data: { ...validData },
-    });
+  const user = await db.user.update({
+    where: { id: self.id },
+    data: { ...validData },
+  });
 
-    revalidatePath(`/${user.username}`);
-    revalidatePath(`/u/${user.username}`);
+  revalidatePath(`/${user.username}`);
+  revalidatePath(`/u/${user.username}`);
 
-    return user;
-  } catch {
-    throw new Error("Internal Error!");
-  }
+  return user;
 };
