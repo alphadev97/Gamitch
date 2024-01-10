@@ -44,18 +44,18 @@ export const CommunityItem = ({
       )}
     >
       <p style={{ color: color }}>{participantName}</p>
-      {/* {isHost && !isSelf && ( */}
-      <Hint label="Block">
-        <Button
-          variant={"ghost"}
-          disabled={isPending}
-          onClick={handleBlock}
-          className="h-auto w-auto p-1 opacity-0 group-hover:opacity-100 transition"
-        >
-          <MinusCircle className="h-4 w-4 text-muted-foreground" />
-        </Button>
-      </Hint>
-      {/* )} */}
+      {isHost && !isSelf && (
+        <Hint label="Block">
+          <Button
+            variant={"ghost"}
+            disabled={isPending}
+            onClick={handleBlock}
+            className="h-auto w-auto p-1 opacity-0 group-hover:opacity-100 transition"
+          >
+            <MinusCircle className="h-4 w-4 text-muted-foreground" />
+          </Button>
+        </Hint>
+      )}
     </div>
   );
 };
