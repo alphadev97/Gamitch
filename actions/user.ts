@@ -4,6 +4,7 @@ import { User } from "@prisma/client";
 
 import { getSelf } from "@/lib/auth-service";
 import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export const updateUser = async (values: Partial<User>) => {
   try {
@@ -16,6 +17,11 @@ export const updateUser = async (values: Partial<User>) => {
       where: { id: self.id },
       data: { ...validData },
     });
+
+    revalidatePath(`/${user.username}`);
+    revalidatePath(`/u/${user.username}`);
+
+    return user;
   } catch {
     throw new Error("Internal Error!");
   }
