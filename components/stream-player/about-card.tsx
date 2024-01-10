@@ -1,6 +1,7 @@
 "use client";
 
 import { VarifiedMark } from "@/components/varified-mark";
+import { BioModal } from "./bio-modal";
 
 interface AboutCardProps {
   hostName: string;
@@ -30,7 +31,7 @@ export const AboutCard = ({
             About {hostName}
             <VarifiedMark />
           </div>
-          {isHost && <p>EDIT</p>}
+          {isHost && <BioModal initialValue={bio} />}
         </div>
         <div className="text-sm text-muted-foreground">
           <span className="font-semibold text-primary">{followedByCount}</span>{" "}
