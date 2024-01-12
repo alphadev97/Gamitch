@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { UserAvatar } from "@/components/user-avatar";
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
 
 export type BlockedUser = {
   id: string;
@@ -14,11 +16,36 @@ export type BlockedUser = {
 export const columns: ColumnDef<BlockedUser>[] = [
   {
     accessorKey: "username",
-    header: "Username",
+    header: ({ column }) => (
+      <Button
+        variant={"ghost"}
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Username
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
+    cell: ({ row }) => (
+      <div className="flex items-center gap-x-4">
+        <UserAvatar
+          username={row.original.username}
+          imageUrl={row.original.imageUrl}
+        />
+        <span>{row.original.username}</span>
+      </div>
+    ),
   },
   {
     accessorKey: "createdAt",
-    header: "Date blocked",
+    header: ({ column }) => (
+      <Button
+        variant={"ghost"}
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Date blocked
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
   },
   {
     id: "actions",
